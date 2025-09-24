@@ -1,4 +1,4 @@
-name: Code Quality Check
+name: Checagem de Qualidade de Código
 
 on:
   push:

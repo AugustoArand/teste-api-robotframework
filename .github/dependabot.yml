@@ -9,9 +9,9 @@ updates:
       time: "06:00"
     open-pull-requests-limit: 5
     reviewers:
-      - "SEU_USUARIO"  # Substitua pelo seu usuário
+      - "AugustoArand"  # Substitua pelo seu usuário
     assignees:
-      - "SEU_USUARIO"  # Substitua pelo seu usuário
+      - "AugustoArand"  # Substitua pelo seu usuário
     commit-message:
       prefix: "deps"
       include: "scope"
@@ -25,9 +25,9 @@ updates:
       time: "06:00"
     open-pull-requests-limit: 3
     reviewers:
-      - "SEU_USUARIO"  # Substitua pelo seu usuário
+      - "AugustoArand"  # Substitua pelo seu usuário
     assignees:
-      - "SEU_USUARIO"  # Substitua pelo seu usuário
+      - "AugustoArand"  # Substitua pelo seu usuário
     commit-message:
       prefix: "ci"
       include: "scope"
