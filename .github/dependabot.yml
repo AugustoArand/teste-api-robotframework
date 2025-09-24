@@ -1,0 +1,33 @@
+version: 2
+updates:
+  # Atualizar dependências do Python/Poetry
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "SEU_USUARIO"  # Substitua pelo seu usuário
+    assignees:
+      - "SEU_USUARIO"  # Substitua pelo seu usuário
+    commit-message:
+      prefix: "deps"
+      include: "scope"
+    
+  # Atualizar GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+    open-pull-requests-limit: 3
+    reviewers:
+      - "SEU_USUARIO"  # Substitua pelo seu usuário
+    assignees:
+      - "SEU_USUARIO"  # Substitua pelo seu usuário
+    commit-message:
+      prefix: "ci"
+      include: "scope"

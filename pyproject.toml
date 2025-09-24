@@ -1,0 +1,43 @@
+[project]
+name = "robot-api"
+version = "0.1.0"
+description = "Testando uma API com Roobot Framework"
+authors = [
+    {name = "Augusto Santoos"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "robotframework (>=7.3.2,<8.0.0)",
+    "robotframework-requests (>=0.9.7,<0.10.0)",
+    "robotframework-faker",
+    "robotframework-jsonlibrary"
+]
+
+[project.optional-dependencies]
+dev = [
+    "robotframework-lint",
+    "robocop",
+    "robotframework-datadriver"
+]
+
+[tool.poetry]
+package-mode = false
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.robocop]
+# Configurações do RoboCop para análise de código Robot Framework
+include = ["*.robot"]
+exclude = ["results/", ".venv/", "__pycache__/"]
+reports = [
+    "rules_by_error_type",
+    "scan_timer", 
+    "file_stats"
+]
+line-length = 120
+keyword-col-limit = 4
+variable-col-limit = 4

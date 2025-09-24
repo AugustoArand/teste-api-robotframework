@@ -1,0 +1,53 @@
+name: Code Quality Check
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python 3.13
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.13
+    
+    - name: Install Poetry
+      uses: snok/install-poetry@v1
+      with:
+        version: latest
+        virtualenvs-create: true
+        virtualenvs-in-project: true
+    
+    - name: Install dependencies
+      run: |
+        poetry install --no-interaction --no-root
+        poetry add --group dev robotframework-lint robocop
+    
+    - name: Robot Framework Lint Check
+      run: |
+        poetry run python -m robot.libdoc --format HTML RequestsLibrary libdoc.html || true
+        
+    - name: RoboCop Analysis
+      run: |
+        poetry run robocop --reports all --output robocop-report.txt Suite/ Resources/ test.robot || true
+        
+    - name: Check Robot Files Syntax
+      run: |
+        poetry run robot --dryrun --output NONE --report NONE --log NONE Suite/ test.robot
+        
+    - name: Upload Quality Reports
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: quality-reports
+        path: |
+          robocop-report.txt
+          libdoc.html
+        retention-days: 7
