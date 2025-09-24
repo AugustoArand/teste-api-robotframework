@@ -46,7 +46,7 @@ jobs:
         poetry run robot --outputdir results --report report_suite.html --log log_suite.html Suite/
     
     - name: Upload Robot Framework Results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: robot-framework-results
