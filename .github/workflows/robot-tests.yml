@@ -31,7 +31,7 @@ jobs:
     
     - name: Load cached venv
       id: cached-poetry-dependencies
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: .venv
         key: venv-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}
@@ -46,7 +46,7 @@ jobs:
         poetry run robot --outputdir results --report report_suite.html --log log_suite.html Suite/
     
     - name: Upload Robot Framework Results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: robot-framework-results

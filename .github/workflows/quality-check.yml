@@ -43,7 +43,7 @@ jobs:
         poetry run robot --dryrun --output NONE --report NONE --log NONE Suite/ test.robot
         
     - name: Upload Quality Reports
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: quality-reports
